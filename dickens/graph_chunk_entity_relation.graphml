@@ -1,4 +1,75 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-  <graph edgedefault="undirected" />
+  <key id="d6" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d5" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d4" for="edge" attr.name="description" attr.type="string" />
+  <key id="d3" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d2" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="Alex">
+      <data key="d0">person</data>
+      <data key="d1">Alex is portrayed with authoritarian certainty and shows a moment of reverence towards the device, indicating a change in perspective.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <node id="Jordan">
+      <data key="d0">Person</data>
+      <data key="d1">Jordan is portrayed with a commitment to discovery and interacts with Taylor's device, indicating a collaboration that could reveal important insights.&lt;SEP&gt;Jordan shares a commitment to discovery and has a significant interaction with Taylor Regarding a device.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7&lt;SEP&gt;chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </node>
+    <node id="Cruz">
+      <data key="d0">organization</data>
+      <data key="d1">Cruz is associated with a vision of control and order, influencing the dynamics among other characters.&lt;SEP&gt;Cruz is associated with a vision of control and order, influencing the dynamics among other characters. He likely plays a pivotal role in shaping the narrative.")&lt;SEP&gt;Cruz's entity is associated with a vision of control and order, influencing the narrative dynamics between characters. His role likely plays a pivotal role in shaping the story's themes.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7&lt;SEP&gt;chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </node>
+    <node id="The Device">
+      <data key="d0">Technology</data>
+      <data key="d1">The Device is central to the story, with potential game-changing implications, and is revered by Taylor.&lt;SEP&gt;The text discusses a device that is central to understanding key themes related to power dynamics, ideological conflict, and possibly revolution or cosmic significance.&lt;SEP&gt;The text discusses a device that is either functional or represents a potential game-changer. The device's role in the narrative is pivotal to its understanding and impact on the story.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7&lt;SEP&gt;chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </node>
+    <node id="Taylor">
+      <data key="d0">Person</data>
+      <data key="d1">Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.</data>
+      <data key="d2">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </node>
+    <node id="&gt;Taylor">
+      <data key="d2">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+      <data key="d1">Alex is affected by Taylor's authoritarian certainty and observes changes in Taylor's attitude towards the device.</data>
+      <data key="d0">UNKNOWN</data>
+    </node>
+    <node id="|&quot;Alex">
+      <data key="d2">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+      <data key="d1">Alex is affected by Taylor's authoritarian certainty and observes changes in Taylor's attitude towards the device.</data>
+      <data key="d0">UNKNOWN</data>
+    </node>
+    <node id="&gt;Jordan">
+      <data key="d2">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+      <data key="d1">Alex and Jordan are part of a team where Taylor interacts with a device directly.</data>
+      <data key="d0">UNKNOWN</data>
+    </node>
+    <node id="|&quot;Taylor">
+      <data key="d2">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+      <data key="d1">They are co-partners in the story who discuss the device's role.</data>
+      <data key="d0">UNKNOWN</data>
+    </node>
+    <edge source="&gt;Taylor" target="|&quot;Alex">
+      <data key="d3">7.0</data>
+      <data key="d4">Alex is affected by Taylor's authoritarian certainty and observes changes in Taylor's attitude towards the device.</data>
+      <data key="d5">power dynamics, perspective shift</data>
+      <data key="d6">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </edge>
+    <edge source="|&quot;Alex" target="&gt;Jordan">
+      <data key="d3">8.0</data>
+      <data key="d4">Alex and Jordan are part of a team where Taylor interacts with a device directly.</data>
+      <data key="d5">mission evolution, active participation </data>
+      <data key="d6">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </edge>
+    <edge source="&gt;Jordan" target="|&quot;Taylor">
+      <data key="d3">9.0</data>
+      <data key="d4">They are co-partners in the story who discuss the device's role.</data>
+      <data key="d5">communication, mutual respect </data>
+      <data key="d6">chunk-570f50da2cba0351c5688bf5506f44f1</data>
+    </edge>
+  </graph>
 </graphml>
