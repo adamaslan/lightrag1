@@ -5,4 +5,8 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://adamaslan.github.io',
                 'git_url': 'https://github.com/adamaslan/lightrag1',
                 'lib_path': 'lightrag1'},
-  'syms': {'lightrag1.core': {'lightrag1.core.foo': ('core.html#foo', 'lightrag1/core.py')}}}
+  'syms': { 'lightrag1.core': {'lightrag1.core.foo': ('core.html#foo', 'lightrag1/core.py')},
+            'lightrag1.lightrag1': { 'lightrag1.lightrag1.initialize_rag': ('cb2.html#initialize_rag', 'lightrag1/lightrag1.py'),
+                                     'lightrag1.lightrag1.main': ('cb2.html#main', 'lightrag1/lightrag1.py'),
+                                     'lightrag1.lightrag1.print_query_metrics': ('cb2.html#print_query_metrics', 'lightrag1/lightrag1.py'),
+                                     'lightrag1.lightrag1.print_stream': ('cb2.html#print_stream', 'lightrag1/lightrag1.py')}}}
