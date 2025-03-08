@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "lightrag1"
+  site-url: "https://adamaslan.github.io/lightrag1"
+  description: "lightrag"
+  repo-branch: main
+  repo-url: "https://github.com/adamaslan/lightrag1"
