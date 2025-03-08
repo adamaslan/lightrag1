@@ -1,0 +1,5 @@
+website:
+  sidebar:
+    contents:
+      - 00_core.ipynb
+      - cb2.ipynb

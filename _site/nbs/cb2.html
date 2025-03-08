@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>cb2 – lightrag1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">lightrag1</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div id="cell-0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nest_asyncio</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lightrag <span class="im">import</span> LightRAG, QueryParam</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lightrag.llm.ollama <span class="im">import</span> ollama_model_complete, ollama_embed</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lightrag.utils <span class="im">import</span> EmbeddingFunc</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lightrag.kg.shared_storage <span class="im">import</span> initialize_pipeline_status</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nest_asyncio.<span class="bu">apply</span>()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>WORKING_DIR <span class="op">=</span> <span class="st">"./dickens"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(<span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(levelname)s</span><span class="st">:</span><span class="sc">%(message)s</span><span class="st">"</span>, level<span class="op">=</span>logging.INFO)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(WORKING_DIR):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    os.mkdir(WORKING_DIR)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> initialize_rag():</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    rag <span class="op">=</span> LightRAG(</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        working_dir<span class="op">=</span>WORKING_DIR,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        llm_model_func<span class="op">=</span>ollama_model_complete,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        llm_model_name<span class="op">=</span><span class="st">"deepseek-r1:1.5b1a"</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        llm_model_max_async<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        llm_model_max_token_size<span class="op">=</span><span class="dv">32768</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        llm_model_kwargs<span class="op">=</span>{</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"host"</span>: <span class="st">"http://localhost:11434"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"options"</span>: {<span class="st">"num_ctx"</span>: <span class="dv">32768</span>},</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        embedding_func<span class="op">=</span>EmbeddingFunc(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            embedding_dim<span class="op">=</span><span class="dv">768</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            max_token_size<span class="op">=</span><span class="dv">8192</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            func<span class="op">=</span><span class="kw">lambda</span> texts: ollama_embed(</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                texts, embed_model<span class="op">=</span><span class="st">"nomic-embed-text"</span>, host<span class="op">=</span><span class="st">"http://localhost:11434"</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> rag.initialize_storages()</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> initialize_pipeline_status()</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rag</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> print_stream(stream):</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="cf">for</span> chunk <span class="kw">in</span> stream:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(chunk, end<span class="op">=</span><span class="st">""</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize RAG instance</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    rag <span class="op">=</span> asyncio.run(initialize_rag())</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read CSV data and build a formatted string</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    csv_data <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"./42a.csv"</span>, <span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> csvfile:</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        reader <span class="op">=</span> csv.DictReader(csvfile)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            csv_data <span class="op">+=</span> <span class="ss">f"Topic: </span><span class="sc">{</span>row[<span class="st">'Topic'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>            csv_data <span class="op">+=</span> <span class="ss">f"Key Concepts/Themes: </span><span class="sc">{</span>row[<span class="st">'Key Concepts/Themes'</span>]<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">"</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Insert the CSV data into the RAG system</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    rag.insert(csv_data)</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test different query modes with updated questions</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Naive Search:"</span>)</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>        rag.query(</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>            <span class="st">"What are the main topics and their associated themes?"</span>,</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>            param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"naive"</span>)</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Local Search:"</span>)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>        rag.query(</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Which topic emphasizes the discipline of sensory focus and aesthetic enhancement?"</span>,</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>            param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"local"</span>)</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Global Search:"</span>)</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>        rag.query(</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>            <span class="st">"How do the themes reflect ideas of personal growth and moderation across different topics?"</span>,</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>            param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"global"</span>)</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Hybrid Search:"</span>)</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>        rag.query(</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Can you summarize how each topic combines concepts of self-expression, beauty, and resource management?"</span>,</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>            param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"hybrid"</span>)</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stream response for one of the queries</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    resp <span class="op">=</span> rag.query(</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Can you summarize how each topic combines concepts of self-expression, beauty, and resource management?"</span>,</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>        param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"hybrid"</span>, stream<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> inspect.isasyncgen(resp):</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>        asyncio.run(print_stream(resp))</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(resp)</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>INFO: Process 65859 Shared-Data already initialized (multiprocess=False)
+INFO:Load (0, 768) data
+INFO:Init {'embedding_dim': 768, 'metric': 'cosine', 'storage_file': './dickens/vdb_entities.json'} 0 data
+INFO:Load (0, 768) data
+INFO:Init {'embedding_dim': 768, 'metric': 'cosine', 'storage_file': './dickens/vdb_relationships.json'} 0 data
+INFO:Load (4, 768) data
+INFO:Init {'embedding_dim': 768, 'metric': 'cosine', 'storage_file': './dickens/vdb_chunks.json'} 4 data
+INFO: Process 65859 storage namespace already initialized: [full_docs]
+INFO: Process 65859 storage namespace already initialized: [text_chunks]
+INFO: Process 65859 storage namespace already initialized: [llm_response_cache]
+INFO: Process 65859 storage namespace already initialized: [doc_status]
+INFO: Process 65859 storage namespace already initialized: [full_docs]
+INFO: Process 65859 storage namespace already initialized: [text_chunks]
+INFO: Process 65859 storage namespace already initialized: [llm_response_cache]
+INFO: Process 65859 storage namespace already initialized: [doc_status]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Naive Search:
+&lt;think&gt;
+Okay, I need to figure out how to respond to this query about the document chunks provided. The user has asked for "What are the main topics and their associated themes?" So, they want me to identify the key areas and related concepts from each topic chunk.
+
+First, let me look at each topic and see what they cover. Starting with Topic 22: Everyone has a void—existential suffering, emotional dissatisfaction, universal struggles, empathy, inner fulfillment. The theme here seems to be about feeling a hole or emptiness that's hard to escape but not always worth fighting for.
+
+Moving on to Topic 23: Down with meditation—any form helpful? It mentions almost every meditation form is useful. This ties into self-improvement and the idea that meditating in different ways can help, so I should highlight various forms of meditation.
+
+Topic 24 talks about gotta git up to git down—concentration for awareness, productivity, mental discipline. It's about practical strategies for staying focused on both creativity and execution.
+
+Topic 25: Animal/vegetarian astrology—is all natural? This seems more about the symbolism in nature and spirituality, emphasizing that beauty is found through physical and spiritual aspects.
+
+Topic 26: Psycho vs socio path—personality issues, social adaptation, behavioral extremes. It's about mental health and how one's behavior can affect others or vice versa.
+
+Topic 27: Paradox with complexity—apparent paradoxical traits like emotional disruption in complex systems. This is more of a philosophical or theoretical discussion on how interconnectedness leads to certain behaviors without straightforward explanations.
+
+Topic 28: heaven vs no need to speculate—thinking about divine presence and inner peace, avoiding speculative judgments. It's about personal spirituality and seeking spiritual fulfillment.
+
+Topic 29: Time—it's not fear but time management with tools like stopwatches. It focuses on how to effectively use time without getting distracted or burnout.
+
+Topic 30: Feminism—hearing from women's perspectives, challenges faced in their world, social justice issues. It covers cultural perspectives and specific social issues within the feminist community.
+
+Topic 31: Neech—jews as masters of slaves, examining their mindset. This is about Jewish identity and how they treat others in a particular way based on their beliefs.
+
+Topic 32: Buddhism—mental aspects discussed here, focusing on thoughts and their effects. It's about the philosophy of Buddhism regarding mind and mental states.
+
+Topic 33: Dreams— living in a dream state, turning it on or off, developing consciousness in subconscious. This is about sleep and its implications for one's experiences.
+
+Looking at each topic chunk, I need to identify themes that connect these topics. The main theme seems to revolve around interconnectedness, spirituality, emotional well-being, mental health, and personal identity. Each topic addresses different facets of these broader areas.
+
+I should structure the response by first identifying all the key themes from the document chunks, then tie them back to the main discussion points like existential suffering, meditation techniques, astrology symbolism, etc., ensuring that each theme is clearly connected.
+&lt;/think&gt;
+
+The document chunks collectively explore a rich tapestry of themes and concepts, with several central ideas emerging from their content:
+
+### 1. **Existential sufferance and emotional dissatisfaction**  
+   - Topics include the void concept (Topic 22), down with meditation (Topic 23), animal/vegetarian astrology (Topic 25), transcendental paradoxes (Topic 27), and inner fulfillment (Topic 20). These themes all touch on the struggle, suffering, and resilience experienced by individuals in various contexts, reflecting a deeper exploration of existential consciousness.
+
+### 2. **Meditation and self-improvement**  
+   - Topics like down with meditation (Topic 23) and gotta git up to git down (Topic 24) emphasize the role of meditation as a universal tool for personal growth, concentration, and focus in both mental and physical aspects.
+
+### 3. **Nature and symbolism**  
+   - The topics discussed include animal/vegetarian astrology (Topic 25), symbolism through nature and spirituality, which explore how perceptions from natural and spiritual realms influence individual experiences and beliefs.
+
+### 4. **Complexity and interconnectedness**  
+   - Topics like the paradox with complexity (Topic 27) and psycho vs socio paths (Topic 26) address broader questions about interconnectedness, social dynamics, and the ways in which one's actions can affect others and vice versa.
+
+### 5. **Spiritual spirituality and inner fulfillment**  
+   - Topics such as heaven vs no need to speculate (Topic 28), personal spirituality (Topic 29), and existential void (Topic 22) delve into themes of divine presence, spiritual mindfulness, and the pursuit of inner peace, respectively.
+
+### 6. **Personal identity and cultural perspectives**  
+   - Topics like the neutrals orientation in Topic 31, Jewish mindset in Topic 31, feminist perspectives in Topic 30, and transcendental recursions (Topic 27) explore various facets of personal identity, societal identity, and cultural practices.
+
+### 7. **Time management and well-being**  
+   - The theme of time is addressed in Topic 29, focusing on the importance of time management with tools like stopwatches, emphasizing how effective use of time can lead to better outcomes.
+
+### 8. **Moral and ethical considerations**  
+   - Topics such as Nietzschean balance (Topic 20), ethical boundaries (Topic 19), and universal struggles (Topic 23) explore questions about the moral, ethical, and cultural implications of various aspects of existence.
+
+In summary, the document chunks collectively address a wide array of themes and concepts, reflecting a comprehensive exploration of existential consciousness, personal identity, spirituality, emotional well-being, mental health, and self-improvement. Each topic touches on different facets of these broader areas, with several central ideas including existential sufferance, meditation's role in self-improvement, symbolism through nature, interconnectedness, spiritual spirituality, and the importance of time management.
+
+Local Search:
+&lt;think&gt;
+Alright, I need to figure out which topic in the provided knowledge base emphasizes the discipline of sensory focus and aesthetic enhancement. Let me start by reviewing each topic and its description.
+
+The first topic is "Existential Void." It talks about a hole or void in one's existence where satisfaction isn't easy, leading to emotional discomfort if unsatisfied. So that relates to dissatisfaction but not specifically sensory focus.
+
+Next is "Meditation Benefits." This section discusses various meditation forms being beneficial for overall well-being and inner peace. While it's related to relaxation and calmness, it doesn't mention anything about focusing on senses or enhancing aesthetics.
+
+Then there's "Soothing Mindfulness Practices." This seems to cover techniques like deep breathing or meditation focused on the mind. Again, it's more about mental relaxation rather than sensory focus or aesthetic enhancement.
+
+The topic titled "Discipline of Sensory Focus" stands out. It directly discusses focusing on one's senses and enhancing sensory experience. The key points are how each sense is given due weight and that this discipline can lead to a deeper connection with the world, which aligns perfectly with the theme of enhancing aesthetics through focus.
+
+Looking further down, "Meditation Benefits in Action" and others relate to meditation techniques but don't specifically delve into sensory focus. The last topic discusses self-dIALOGue and its role in exploring thoughts, which is more about introspection than focus on senses or aesthetics.
+
+So, the topic that clearly emphasizes discipline in sensory focus and aesthetic enhancement is "Discipline of Sensory Focus." It's directly addressing how focusing on each sense can lead to a deeper appreciation of beauty and inner peace.
+&lt;/think&gt;
+
+The topic that emphasizes the discipline of sensory focus and aesthetic enhancement is **"Discipline of Sensory Focus"**. This section discusses techniques such as deep breathing, meditation, and other methods aimed at enhancing the experience through focused attention on one's senses and fostering a deeper connection with the world.
+
+Global Search:
+&lt;think&gt;
+Okay, I need to figure out how the themes in this knowledge base relate to personal growth and moderation. Let me start by looking at each topic one by one.
+
+First up is "Existential Void," which talks about a hole or lack of satisfaction. That seems like a clear reflection of not having been satisfied enough. Maybe it's about finding meaning or purpose, so that ties into personal growth.
+
+Next is "Mental Quacks" under Buddhism. The topics here are mental qualities and things like tranquility and cognitive flexibility. These could be seen as parts of maintaining inner peace, which is a form of moderation since they're about balance rather than excessive engagement with tasks.
+
+Then there's "Meditation Benefits." This includes mindfulness practices and how meditation affects the brain. Meditation itself is a form of personal growth because it helps in self-awareness and reflection. So that ties into both mental and emotional aspects, promoting balance through structured practice.
+
+"Power Dynamics" under social media topics is about perspectives shifting based on others' intentions. That’s more about community or superficial interactions, which might not directly show personal growth but could reflect the ability to navigate different viewpoints, maybe a form of moderation by considering diverse opinions rather than one.
+
+Looking at "Chronic Issues," it's about dealing with something that doesn't improve over time, like mental fatigue. This can be viewed as a way to grow by finding solutions or new perspectives, balancing continued struggle against progress.
+
+"Impathy and Connection" is about understanding others' feelings, which involves empathy and maintaining relationships. These are fundamental social skills, part of personal growth in being able to connect with others and contribute to shared well-being.
+
+"Time Management" under sources is about prioritizing tasks and tracking time. This helps in personal development by improving efficiency, allowing for more focus on activities that matter more, promoting moderation through structured planning.
+
+Lastly, "Fascist Influences" deals with how certain beliefs affect decisions. This ties into the idea of making choices based on societal or cultural norms, which can lead to growth but may also result from systemic constraints.
+
+Overall, each theme seems to offer a way to navigate life challenges or social issues by finding balance and meaningful connections, thus reflecting personal growth and moderation in various contexts.
+&lt;/think&gt;
+
+The themes in this knowledge base reflect broader concepts of personal growth and moderation across different topics. Here's how they can be understood in terms of personal development:
+
+1. **Existential Void**: This theme highlights the idea of not having been satisfied or fulfilled enough. It serves as a reflection of personal growth, where it is essential to find meaning and purpose through meaningful relationships, self-reflection, and action.
+
+2. **Mental Quacks and Mindfulness**: Topics like "traineuse" (lack of mental flexibility) and the role of mindfulness in meditating on thoughts suggest that mental quacks can be part of personal growth. These practices help maintain balance by fostering inner clarity and freedom from excessive focus, which is crucial for maintaining well-being.
+
+3. **Meditation Benefits**: The emphasis on meditation as a form of personal growth indicates its role in self-awareness and reflection. Meditation helps individuals navigate their lives more effectively, allowing them to find contentment and growth while prioritizing inner peace over superficial tasks.
+
+4. **Power Dynamics and Perspectives Shifts**: This theme reflects the complexity of navigating social interactions where perspectives can change based on others' intentions. It is a form of moderation that allows individuals to explore diverse viewpoints and maintain personal autonomy in relationships or communities.
+
+5. **Chronic Issues and Progression**: Topics like chronic issues suggest the importance of finding solutions rather than continuing without progress. This approach mirrors personal growth by encouraging seeking new opportunities for improvement and balance, ensuring continued well-being.
+
+6. **Impathy and Relationships**: Understanding others' feelings ties into the concept of social connection and mutual support. This reflects a form of moderation where individuals connect on a deeper level, contributing to shared well-being and personal development through empathy and active participation in relationships.
+
+7. **Time Management and Prioritization**: Managing time effectively is crucial for personal growth as it allows individuals to prioritize tasks, focusing on what matters most while still maintaining balance with other responsibilities.
+
+8. **Fascist Influences**: Acknowledging the impact of societal or cultural norms on choices reflects a broader consideration of how external factors can influence personal decisions and growth. It underscores the importance of critically examining influences rather than being driven by them.
+
+In summary, these themes collectively illustrate how personal growth involves navigating challenges, finding balance through various perspectives, and maintaining well-being. They reflect the ability to adjust behavior in response to changing circumstances while fostering resilience and adaptability—key elements of personal development and moderation.
+
+Hybrid Search:
+&lt;think&gt;
+Okay, I'm trying to figure out how all these topics in the knowledge base connect to self-expression, beauty, and resource management. Let me start by reading through each topic one by one.
+
+The first topic is about existential void and emotional dissatisfaction. It talks about needing inner fulfillment but feeling bad when you feel bad. That makes sense because it's about finding meaning and balance—self-expression. The beauty part might come from the sense of purpose or completeness, which are forms of beauty in this context. Resource management could be about how we manage our time and resources to achieve these states.
+
+Next up is meditation as a way to down with it. I know meditation is great for relaxing and reducing stress, which relates to self-expression by finding peace. Beauty here could mean the calmness or inner tranquility. Resource management might involve using meditation sessions as a way to manage daily tasks without losing time.
+
+The third topic mentions Nietzsche's will to power. That's about pushing forward and achieving goals, so it ties into resource management when people prioritize their efforts—saving resources by focusing on what's most important. Self-expression here could be through creativity or action that contributes positively. Beauty might relate to the drive to do something beyond our needs.
+
+Thinking with a friend from the fourth topic sounds like it's about social interaction and how sharing can reduce resource use (like not using the phone while watching TV). It's more about relationships and balance, which is self-expression. Beauty could be in harmony or mutual understanding. Resource management would involve being mindful of what's needed for these interactions.
+
+Nestrix, the organism, reminds me of humans interacting with nature. The idea that our lives shape nature and vice versa might relate to resource management when we rely on others for resources. Self-expression could come from gratitude or appreciation for natural elements. Beauty is perhaps in the balance between human and natural aspects.
+
+The fifth topic about the device's role as a tool suggests using resources wisely. The device itself isn't a resource unless it needs power, but managing how it uses resources can affect outcomes. Self-expression might be through effective use of technology. Beauty could involve efficiency or innovation in its design.
+
+Meditation and life coaching (topics 6-7) seem to focus on self-improvement without using excessive time. Self-expression here is about personal growth and happiness. Beauty could be the sense of calm or progress achieved. Resource management might mean prioritizing one's goals over superficial tasks, which can free up resources for other areas.
+
+Exploring and bonding (topics 8-9) likely emphasizes community and shared experiences. Self-expression is about contributing to a group. Beauty here could be harmony or mutual enjoyment. Resources could involve time spent on activities that benefit others.
+
+The sixth topic about the device's role as a tool again ties into managing resources for success, which relates to resource management. Self-expression through using technology effectively. Beauty might be in creating tools that enhance lives. Resource management would mean being efficient with the resources they use.
+
+Innovation and collaboration (topics 10-13) emphasize teamwork and problem-solving. Self-expression through active participation. Beauty is perhaps creativity or innovation. Resources could involve planning projects together, which saves time when working on larger issues.
+
+Meditation in spiritual contexts, as mentioned in topics 14-22, suggests mindfulness for personal growth without using much time. Self-expression is about peace and balance. Beauty could be the sense of connection through this practice. Resource management might mean focusing on one's needs without overcomplicating things.
+
+The last topic about resourcefulness involves prioritizing tasks and using resources wisely to achieve goals. Self-expression through effective planning. Beauty perhaps in being productive or goal-oriented. Resource management is straightforward, like budgeting money for essential activities.
+
+Putting it all together, each topic seems to tie into self-expression by focusing on balance, creativity, and purpose. Beauty could refer to the sense of completion, satisfaction, or harmony achieved through these practices. Resource management might be about using time wisely to support these aspects without overextending resources.
+&lt;/think&gt;
+
+The knowledge base provides a comprehensive exploration of how concepts like self-expression, beauty, and resource management intersect across various topics. Here's a structured summary:
+
+1. **Existential Void and Emotional Dissatisfaction**: This topic emphasizes the need for inner fulfillment and balancing one's life to avoid feelings of emotional dissatisfaction. Self-expression is about finding meaning and purpose, with beauty potentially referring to this sense of completion.
+
+2. **Meditation as a Tool for Downwith It**: Meditation promotes relaxation and reducing stress, aligning with self-expression by fostering peace. Beauty could be the calmness or inner tranquility gained through practice. Resource management might involve using meditation sessions efficiently without losing time.
+
+3. **Nietzschean Will to Power**: This concept highlights prioritizing goals and efforts over superficial tasks, supporting resource management by focusing on what's most important. Self-expression is through effective action, with beauty in the drive to achieve purposeful goals.
+
+4. **Thinking with a Friend**: Social interactions reduce resource use, emphasizing community and shared experiences. Beauty could be harmony or mutual understanding. Resource management involves prioritizing one's needs without overextending resources.
+
+5. **Nestrix and Human Interaction**: Interactions with nature balance human and natural aspects. Self-expression through gratitude and appreciation. Beauty might involve the balance between humans and nature.
+
+6. **Device as a Tool**: Managing resources for success, supporting self-expression through effective use of technology. Beauty could be efficiency or innovation in design. Resource management involves prioritizing goals over superficial tasks.
+
+7. **Exploring and Bonding**: Community support fosters shared experiences, enhancing self-expression and community. Beauty is harmony or mutual enjoyment. Resources could involve time spent on activities that benefit others.
+
+8. **Innovation and Collaboration**: Focuses on teamwork and problem-solving, supporting self-expressivity through active participation. Beauty involves creativity or innovation. Resource management might involve planning projects together for efficiency.
+
+9. **Meditation in Spiritual Contexts**: Mindful practice for peace without excessive use, aligning with self-expression through peace. Beauty could be the sense of connection. Resource management is straightforward budgeting for essential activities.
+
+10. **Resourcefulness and Prioritization**: Priorities in task management support self-expression through effective planning. Beauty might be productivity or goal-oriented focus. Resource management involves efficient use without neglecting resources.
+
+In summary, each topic explores how balance (self-expression), completeness (beauty), and efficiency (resource management) are interconnected, emphasizing the need for mindfulness, collaboration, and harmony in various contexts.
+&lt;think&gt;
+Okay, I'm trying to figure out how all these topics in the knowledge base connect to self-expression, beauty, and resource management. Let me start by reading through each topic one by one.
+
+The first topic is about existential void and emotional dissatisfaction. It talks about needing inner fulfillment but feeling bad when you feel bad. That makes sense because it's about finding meaning and balance—self-expression. The beauty part might come from the sense of purpose or completeness, which are forms of beauty in this context. Resource management could be about how we manage our time and resources to achieve these states.
+
+Next up is meditation as a way to down with it. I know meditation is great for relaxing and reducing stress, which relates to self-expression by finding peace. Beauty here could mean the calmness or inner tranquility. Resource management might involve using meditation sessions as a way to manage daily tasks without losing time.
+
+The third topic mentions Nietzsche's will to power. That's about pushing forward and achieving goals, so it ties into resource management when people prioritize their efforts—saving resources by focusing on what's most important. Self-expression here could be through creativity or action that contributes positively. Beauty might relate to the drive to do something beyond our needs.
+
+Thinking with a friend from the fourth topic sounds like it's about social interaction and how sharing can reduce resource use (like not using the phone while watching TV). It's more about relationships and balance, which is self-expression. Beauty could be in harmony or mutual understanding. Resource management would involve being mindful of what's needed for these interactions.
+
+Nestrix, the organism, reminds me of humans interacting with nature. The idea that our lives shape nature and vice versa might relate to resource management when we rely on others for resources. Self-expression could come from gratitude or appreciation for natural elements. Beauty is perhaps in the balance between human and natural aspects.
+
+The fifth topic about the device's role as a tool suggests using resources wisely. The device itself isn't a resource unless it needs power, but managing how it uses resources can affect outcomes. Self-expression might be through effective use of technology. Beauty could involve efficiency or innovation in its design.
+
+Meditation and life coaching (topics 6-7) seem to focus on self-improvement without using excessive time. Self-expression here is about personal growth and happiness. Beauty could be the sense of calm or progress achieved. Resource management might mean prioritizing one's goals over superficial tasks, which can free up resources for other areas.
+
+Exploring and bonding (topics 8-9) likely emphasizes community and shared experiences. Self-expression is about contributing to a group. Beauty here could be harmony or mutual enjoyment. Resources could involve time spent on activities that benefit others.
+
+The sixth topic about the device's role as a tool again ties into managing resources for success, which relates to resource management. Self-expression through using technology effectively. Beauty might be in creating tools that enhance lives. Resource management would mean being efficient with the resources they use.
+
+Innovation and collaboration (topics 10-13) emphasize teamwork and problem-solving. Self-expression through active participation. Beauty is perhaps creativity or innovation. Resources could involve planning projects together, which saves time when working on larger issues.
+
+Meditation in spiritual contexts, as mentioned in topics 14-22, suggests mindfulness for personal growth without using much time. Self-expression is about peace and balance. Beauty could be the sense of connection through this practice. Resource management might mean focusing on one's needs without overcomplicating things.
+
+The last topic about resourcefulness involves prioritizing tasks and using resources wisely to achieve goals. Self-expression through effective planning. Beauty perhaps in being productive or goal-oriented. Resource management is straightforward, like budgeting money for essential activities.
+
+Putting it all together, each topic seems to tie into self-expression by focusing on balance, creativity, and purpose. Beauty could refer to the sense of completion, satisfaction, or harmony achieved through these practices. Resource management might be about using time wisely to support these aspects without overextending resources.
+&lt;/think&gt;
+
+The knowledge base provides a comprehensive exploration of how concepts like self-expression, beauty, and resource management intersect across various topics. Here's a structured summary:
+
+1. **Existential Void and Emotional Dissatisfaction**: This topic emphasizes the need for inner fulfillment and balancing one's life to avoid feelings of emotional dissatisfaction. Self-expression is about finding meaning and purpose, with beauty potentially referring to this sense of completion.
+
+2. **Meditation as a Tool for Downwith It**: Meditation promotes relaxation and reducing stress, aligning with self-expression by fostering peace. Beauty could be the calmness or inner tranquility gained through practice. Resource management might involve using meditation sessions efficiently without losing time.
+
+3. **Nietzschean Will to Power**: This concept highlights prioritizing goals and efforts over superficial tasks, supporting resource management by focusing on what's most important. Self-expression is through effective action, with beauty in the drive to achieve purposeful goals.
+
+4. **Thinking with a Friend**: Social interactions reduce resource use, emphasizing community and shared experiences. Beauty could be harmony or mutual understanding. Resource management involves prioritizing one's needs without overextending resources.
+
+5. **Nestrix and Human Interaction**: Interactions with nature balance human and natural aspects. Self-expression through gratitude and appreciation. Beauty might involve the balance between humans and nature.
+
+6. **Device as a Tool**: Managing resources for success, supporting self-expression through effective use of technology. Beauty could be efficiency or innovation in design. Resource management involves prioritizing goals over superficial tasks.
+
+7. **Exploring and Bonding**: Community support fosters shared experiences, enhancing self-expression and community. Beauty is harmony or mutual enjoyment. Resources could involve time spent on activities that benefit others.
+
+8. **Innovation and Collaboration**: Focuses on teamwork and problem-solving, supporting self-expressivity through active participation. Beauty involves creativity or innovation. Resource management might involve planning projects together for efficiency.
+
+9. **Meditation in Spiritual Contexts**: Mindful practice for peace without excessive use, aligning with self-expression through peace. Beauty could be the sense of connection. Resource management is straightforward budgeting for essential activities.
+
+10. **Resourcefulness and Prioritization**: Priorities in task management support self-expression through effective planning. Beauty might be productivity or goal-oriented focus. Resource management involves efficient use without neglecting resources.
+
+In summary, each topic explores how balance (self-expression), completeness (beauty), and efficiency (resource management) are interconnected, emphasizing the need for mindfulness, collaboration, and harmony in various contexts.</code></pre>
+</div>
+</div>
+<div id="cell-1" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reinitialize the RAG instance; this will load data from the existing working directory "./dickens"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>rag <span class="op">=</span> asyncio.run(initialize_rag())</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: perform a query to extract data from the Dickens working directory</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>query_text <span class="op">=</span> <span class="st">"Please extract and summarize all topics and themes stored in the Dickens dataset."</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> rag.query(query_text, param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"global"</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># If the result is a streaming response, consume it asynchronously; otherwise, print the result directly.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">hasattr</span>(result, <span class="st">'__aiter__'</span>):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="kw">def</span> consume_stream():</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        full_response <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">async</span> <span class="cf">for</span> chunk <span class="kw">in</span> result:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            full_response <span class="op">+=</span> chunk</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(full_response)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    asyncio.run(consume_stream())</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[9], line 4</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> <span style="font-weight:bold;color:rgb(0,0,255)">asyncio</span>
+<span class="ansi-green-fg ansi-bold">      3</span> <span style="font-style:italic;color:rgb(95,135,135)"># Reinitialize the RAG instance; this will load data from the existing working directory "./dickens"</span>
+<span class="ansi-green-fg">----&gt; 4</span> rag <span style="color:rgb(98,98,98)">=</span> asyncio<span style="color:rgb(98,98,98)">.</span>run(<span class="ansi-yellow-bg">initialize_rag</span>())
+<span class="ansi-green-fg ansi-bold">      6</span> <span style="font-style:italic;color:rgb(95,135,135)"># Example: perform a query to extract data from the Dickens working directory</span>
+<span class="ansi-green-fg ansi-bold">      7</span> query_text <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Please extract and summarize all topics and themes stored in the Dickens dataset.</span><span style="color:rgb(175,0,0)">"</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'initialize_rag' is not defined</pre>
+</div>
+</div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the `rag` instance has already been created in a previous cell</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Additional Questions:"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Naive mode query: exploring economic aspects</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Naive Query:"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    rag.query(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"What topic discusses economic prosperity and its impact on community life?"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"naive"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Local mode query: connecting artistic expression with systematic resource allocation</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Local Query:"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    rag.query(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Which topic integrates artistic expression with systematic resource allocation?"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"local"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Global mode query: comprehensive analysis of aesthetic themes</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Global Query:"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    rag.query(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Can you provide a comprehensive analysis of aesthetic themes across all topics?"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        param<span class="op">=</span>QueryParam(mode<span class="op">=</span><span class="st">"global"</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Additional Questions:
+Naive Query:
+&lt;think&gt;
+Alright, I'm looking at this query where the user is asking about the topic discussing economic prosperity and its impact on community life. They've provided a document chunk with several topics related to existential void, meditation, and various aspects of human psychology and spirituality.
+
+First, I need to determine which of these topics specifically relates to economics or economic prosperity. The document chunks cover a wide range from existential themes to social and spiritual topics. However, none directly mention anything about economics or how economic factors affect communities.
+
+Since the provided documents don't include information on economic prosperity, I can conclude that this topic isn't covered in the given chunks. Therefore, there's no relevant discussion here, and the user is looking for more content than is available.
+&lt;/think&gt;
+
+This query does not provide any information about economic prosperity or its impact on community life as it relates to the topics covered in the document chunks provided. The document chunk discusses various themes related to existential void, meditation, spirituality, and human psychology, but none of these topics cover economics or its effects on communities. Therefore, there is no relevant discussion available for this query based on the given information.
+
+Local Query:
+&lt;think&gt;
+Okay, I'm trying to figure out which topic in the given Knowledge Base integrates artistic expression with systematic resource allocation. Let's break this down step by step.
+
+First, I'll go through each topic and see what they're about. The Topics include things like existential void, meditation benefits, cognitive health, time management, philosophy of resource allocation, etc. My goal is to find a topic that connects both artistic expression and systematic resource allocation.
+
+Looking at the provided Knowledge Base, I notice topics related to meditation and its effects on people's lives. Specifically, there are sections about meditation being helpful for various forms and the benefits it can provide. This seems relevant because meditation involves systematic practice aimed at inner peace, which is a form of artistic expression in that you're channeling yourself into a state of calm.
+
+Another topic mentioned is resource allocation itself, but it's more about how to manage resources systematically. However, I'm looking for something that combines both. The meditation section might be the key here because it emphasizes systematic practice and artistry through the process of meditating.
+
+I also see sections on existential themes like the void and inner fulfillment, which can tie into artistic expression by creating a sense of peace or connection. But these are more about themes than methods of expression. 
+
+The Time Management section discusses practical techniques for time allocation, but again, it's about applying resources (time) systematically rather than expressing them artistically.
+
+The philosophy of resource allocation deals with structuring resources, which is methodical but doesn't directly connect to artistic expression unless we consider how the allocation process itself can be seen as an artistic creation or work in progress. But this seems less direct compared to meditation's focus on inner state and practice.
+
+Given all these points, the meditation section stands out because it deals with systematic resource allocation (time and energy) while creating an artistic expression of peace and inner contentment. This aligns perfectly with what I'm looking for.
+&lt;/think&gt;
+
+The topic that best integrates artistic expression with systematic resource allocation is the **Meditation Section** within the provided Knowledge Base. This section emphasizes the artful application of time and energy through meditation, aiming to achieve an inner state of peace and calm. Through systematic practice, meditants encourage creative expression in creating a sense of inner freedom and connection, aligning with both artistic creation and the structured allocation of resources.
+
+Global Query:
+&lt;think&gt;
+Alright, let's see what I need to do here. The  asked me to provide a comprehensive analysis of aesthetic themes across all topics in their provided knowledge base. Hmm, okay, so I have to go through each topic they've given and extract the key aesthetic elements from each. 
+
+First, I should review the entities and relationships to make sure I haven't missed anything. The entities are things like &gt;Jordan, |Alex, Taylor, and various types like UNKNOWN. The relationships involve how these entities interact with each other, especially focusing on timestamps for when this information was acquired. Each relationship has a description of the theme it explores.
+
+Looking at the topics provided, they cover a wide range from existential themes to more personal or philosophical ones. I think I should go through each topic one by one and extract aesthetic elements. For each, maybe include some key characteristics like nature, symbolism, technology, etc., based on the content. 
+
+Wait, but how do I know what makes something an aesthetic theme? Aesthetic themes are usually about beauty, form, perception, or spiritual impact. So I need to identify which parts of the topics fall under these categories. For example, in Jordan's interactions with Taylor and Alex, there might be themes related to power dynamics, mutual respect, etc.
+
+Also, since the  mentioned not to include anything not provided by the knowledge base, I have to make sure my analysis strictly follows what's given without making any assumptions beyond that.
+
+I should structure this into sections for each topic, maybe with headings like Nature, Symbolism, Technology, and so on. Each section will list aesthetic elements specific to that category as per the entities and relationships provided.
+
+Let me start by outlining each topic and extracting their aesthetic themes. For example, in Topic 23 about meditation benefits, I can note how it promotes mindfulness practices, mutual respect, etc., under the nature or symbolism umbrella.
+
+I also need to remember the Response Rules: multiple paragraphs, markdown headings, no added information not in knowledge base, and maintain continuity with the conversation history. So after structuring each topic's aesthetic themes, I'll wrap it up neatly without any fluff.
+
+Wait, but some topics might have more than one aesthetic theme. For example, existential void could encompass power dynamics, perspective shifts, etc. I need to ensure each aesthetic element is clearly defined under its respective category.
+
+Also, since the knowledge base includes timestamps for when this info was created, maybe that's relevant in explaining how these themes developed or co-evolved over time. But the  didn't specify including timestamps in the response rules, so perhaps it's better not to include them unless necessary.
+
+Finally, I should make sure my analysis is concise and fits within multiple paragraphs as per the response format. Each aesthetic theme should be a clear bullet point under its respective category, making it easy to read and understand.
+&lt;/think&gt;
+
+### Comprehensive Analysis of Aesthetic Themes Across Topics
+
+#### Topic 22: Existential Void – i.e., a hole in reality, satisfaction hard to come by, don’t feel bad that you feel bad  
+**Aesthetic Themes:**  
+- **Nature:** Emphasizes the absence of purpose or meaningful connection.  
+- **Symbolism:** Often represents the void that arises when expectations and reality clash.  
+- **Perception:** Highlights the need for acceptance in a perceived hole in existence.  
+
+#### Topic 23: Meditation Benefits, Mindfulness Practices, Mental Health, Spiritual Techniques, Success Strategies  
+**Aesthetic Themes:**  
+- **Nature:** Focuses on physical health benefits of mindfulness and relaxation.  
+- **Technology:** Explores how technology can enhance mental well-being through specific practices.  
+- **Symbolism:** Suggests the use of symbols to foster clarity and emotional balance.  
+- **Perception:** Encourages a holistic approach to self-improvement, integrating various perspectives.  
+
+#### Topic 24: Concentration, Awareness, Productivity, Mental Discipline, Success Strategies  
+**Aesthetic Themes:**  
+- **Nature:** Drives towards deep focus and sustained concentration for efficiency.  
+- **Technology:** Explores the role of modern tools in enhancing attention and productivity.  
+- **Symbolism:** May include the importance of patience and precision in achieving goals.  
+- **Perception:** Highlights the value of mental discipline in overcoming challenges.  
+
+#### Topic 25: Nature Symbolism, Astrological Essence, Physical Characteristics, Spiritual Techniques, Environmental Connection  
+**Aesthetic Themes:**  
+- **Nature:** Depicts the symbolic significance of natural elements and their influence on human experiences.  
+- **Symbolism:** Focuses on the essence of nature as a metaphor for spiritual or existential growth.  
+- **Technology:** May not be relevant here but could relate to data-driven insights in related fields.  
+- **Perception:** Encourages viewing nature through symbolic lenses rather than literal ones.  
+
+#### Topic 26: Psycho vs. socio Path – One more productive, both are cranks  
+**Aesthetic Themes:**  
+- **Nature:** Emphasizes the importance of balanced social interactions for personal growth.  
+- **Symbolism:** Highlights the tension between psychoanalysis and socialism.  
+- **Technology:** May not be applicable as it pertains to abstract themes rather than practical outcomes.  
+- **Perception:** Encourages critical thinking about the nature of identity and progress.  
+
+#### Topic 27: Paradox with In – Complexity with In Is Tantamount to Paradoxical Traits and In Behavioral Incongruity is the Norm  
+**Aesthetic Themes:**  
+- **Nature:** Focuses on paradoxical yet balanced aspects of existence.  
+- **Technology:** May relate to technological innovations in addressing complexity or behavior.  
+- **Symbolism:** Encourages a perspective that sees paradox as a sign of harmony rather than chaos.  
+- **Perception:** Highlights the importance of understanding and navigating complex relationships.  
+
+#### Topic 28: Spiritual Presence, Present Focus, Divine Immanence, Specificity with Human Nature  
+**Aesthetic Themes:**  
+- **Nature:** Reflects on the essence of being in the present moment.  
+- **Symbolism:** Suggests spiritual integration as a key aesthetic.  
+- **Technology:** May not be directly relevant but could relate to data-driven insights in related fields.  
+- **Perception:** Emphasizes the importance of inner focus and awareness in achieving spiritual goals.  
+
+#### Topic 29: Time – Don’t Be afraid – Measure It with Stopwatches, Clocks, Calimers – Be Intimate With Time  
+**Aesthetic Themes:**  
+- **Nature:** Highlights the concept of continuous time and its significance.  
+- **Symbolism:** Encourages viewing time as a fundamental aspect of existence rather than an abstract tool.  
+- **Technology:** May not be directly relevant but could relate to data-driven insights in related fields.  
+- **Perception:** Emphasizes valuing time for personal and emotional growth.  
+
+#### Topic 30: Feminism – Gitty Up! Update 2-19-19 Feminism is important to me because I see half the population of the world suffering from a patriarchical prejudice that is stunting the growth of civilization. If that’s not enough to be a feminist, I don’t know what is. Prejudice is inherently dumb. Patriarchy is a biased archaic system. Any ways I say gitty up because its little traveled territory for men to have a legitimate opinion on feminist issues, but if you see something – take the concept of full expression as an example of maximized beauty, we see its extreme importance in all of our lives. Older but mildly edited writing – It’s about comfort to express fully – inequality runs deep – share your beautiful life – grrrl! Be all you and that’s all you need to be satisfied… But for real though sex positive feminism…. can’t say enough about it. You see in sexuality there's a power of agenda (i.e. who sets the agenda is the powerful one). In that sense, feminist sexuality exists wherever women are controlling or have an equal role in the sexual agenda. I would also argue that feminist sexuality exists wherever women are satisfied with the sexual agenda or satisfied with their decision to engage in a sexual act even if they’re totally lacking any control of the agenda. Update 2-19-19 – Is there a backlash against sex positivity in 2019? Could it be just a general distaste in men? Or could it be the influence of fascism in the world? Are we subtly acting more fascist towards how we approach sex?  
+
+**Aesthetic Themes:**  
+- **Nature:** Focuses on the universal themes of power dynamics and social hierarchies.  
+- **Symbolism:** Highlights the importance of gender balance and equality.  
+- **Technology:** May not be directly relevant but could relate to data-driven insights in related fields.  
+- **Perception:** Encourages valuing the role of women in maintaining societal norms and behaviors.  
+
+This analysis provides a structured, comprehensive look at aesthetic themes across all topics, focusing on nature, symbolism, technology, and philosophical depth.</code></pre>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_query_metrics(query_text, mode):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    start_time <span class="op">=</span> time.time()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> rag.query(query_text, param<span class="op">=</span>QueryParam(mode<span class="op">=</span>mode))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    duration <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the result is an async generator; if so, run the stream synchronously for metrics.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">hasattr</span>(result, <span class="st">'__aiter__'</span>):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">async</span> <span class="kw">def</span> get_full_response():</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            response <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">async</span> <span class="cf">for</span> chunk <span class="kw">in</span> result:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                response <span class="op">+=</span> chunk</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> response</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> asyncio.run(get_full_response())</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Query: </span><span class="sc">{</span>query_text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Mode: </span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Response:"</span>, result)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time taken: </span><span class="sc">{</span>duration<span class="sc">:.2f}</span><span class="ss"> seconds</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Metrics for Additional Queries:"</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Example metric measurement for a naive mode query</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>print_query_metrics(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"How does the system interpret the integration of self-expression with economic factors?"</span>, </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"naive"</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Example metric measurement for a global mode query</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>print_query_metrics(</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Can you detail the thematic evolution in topics emphasizing moderation?"</span>, </span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"global"</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Metrics for Additional Queries:
+Query: How does the system interpret the integration of self-expression with economic factors?
+Mode: naive
+Response: &lt;think&gt;
+Okay, let me try to figure out how the system interprets the integration of self-expression with economic factors based on the provided document chunks and conversation history.
+
+First, I need to understand what "self-expression" means in this context. From the document, it seems like it refers to expressing personal thoughts, values, and ideas through various channels. The user mentioned things like talking about themselves, exercising, etc., which all contribute to self-expression.
+
+Now, looking at the conversation history, topics are discussed around existential themes, pragmatism, meditation, abstract concepts, etc. These seem more aligned with a deeper exploration of life's meaning and purpose rather than economics. There are no direct references or mentions of economic factors in these topics.
+
+In the response rules, there's nothing specific about integrating self-expression with economic factors. The focus is on philosophy, ethics, personal development, etc., without touching on economics or finance aspects. Therefore, it seems the system doesn't interpret any connection between self-expression and economics since both are not covered in the provided document chunks.
+
+Maybe I should check if there's any implicit assumption here. Perhaps the user expects the system to explore how one can balance their personal expression with economic choices? But without explicit information on that angle, it's hard to say. It might be a scenario where the integration isn't expected or considered at all based on the provided materials.
+
+Also, considering the context, the document chunks don't mention any real-world applications of self-expression in economics. They are more about personal development and existential themes, which aren't directly related. So, I think it's safe to say that the system treats these topics separately without integrating them with economic factors.
+&lt;/think&gt;
+
+The system does not interpret the integration of self-expression with economic factors based on the provided document chunks. The conversation history discusses existential themes, pragmatism, meditation, and abstract concepts, which do not include any explicit mention of economics or financial topics. Therefore, there is no indication that the system would integrate personal expression with economic considerations in this context.
+Time taken: 20.87 seconds
+
+Query: Can you detail the thematic evolution in topics emphasizing moderation?
+Mode: global
+Response: &lt;think&gt;
+Okay, I need to figure out how the topics related to moderation have evolved over time based on the provided knowledge base. Let me start by reviewing each section.
+
+First, looking at "Sources," they cover various aspects of moderation like mental flexibility and spiritual techniques. The 25th topic talks about animal/vegetarian astrology, which is more about nature and essential elements than social or personal moderation. So maybe that's an early shift away from moderation focused on human needs.
+
+Next, the "Relationships" section has several interactions. One of them mentions Taylor interacting with a device directly, which seems more about communication rather than emotional regulation. Another interaction involves Taylor feeling authoritarian certainty, possibly related to power dynamics but not necessarily centered around moderation in personal or social aspects. These interactions are less focused on balancing emotions and behaviors.
+
+Looking at the "Knowledge Base," the topics under "Sources" include themes like existential void, meditation benefits, concentration for awareness, and spiritual techniques. The first two topics talk about emotional satisfaction and self-compassion, which seem more about mental well-being rather than moderation in a broader sense. The later topics touch on time and temporal awareness but don't delve into balancing human needs.
+
+So the main evolution seems to be from early focus on human needs and emotional well-being towards personal growth and spiritual practices. There's a gradual shift away from social or ethical considerations in moderation but increases in the emphasis on psychological aspects of self-awareness and relationships with oneself through various interactions.
+
+I think I need to structure this response by discussing each topic, highlighting how the content changed from early sources, focusing on emotions and needs to later, incorporating personal growth and spiritual practices. I should mention that while moderation is still a significant theme, it's integrated more into personal development rather than just balancing social or ethical aspects.
+&lt;/think&gt;
+
+The evolution of topics related to moderation in the provided knowledge base reflects a shift from an early emphasis on human needs and emotional well-being to a focus on personal growth, psychological regulation, and spiritual practices. Here is a detailed overview:
+
+1. **Early Focus (Sources 25-30):**
+   - Topics under "Sources" such as animal/vegetarian astrology and nature symbolism emphasize essential elements and natural processes. These discussions were more about understanding the world around them rather than balancing human needs or personal growth.
+   - Interactions with Taylor, Taylor's authoritarian certainty, and Alex's emotional dissociation from Taylor reflect early concerns about maintaining social harmony and emotional relationships.
+
+2. **Shift to Personal and Emotional Well-being:**
+   - Topics like existential void, self-compassion, and self-awareness focus more on personal mental flexibility and emotional satisfaction. These discussions began to integrate human needs into the narrative of personal growth.
+   - The mention of Taylor feeling authoritarian certainty suggests an interest in understanding relationships and balancing power dynamics, though not directly related to moderation.
+
+3. **Expansion into Personal Development:**
+   - As interactions with Jordan and Alex became more prominent, topics began to incorporate psychological regulation and self-awareness more deeply. For example, Alex's interaction with a device involved communication about mental flexibility.
+   - The introduction of concepts like mission evolution, active participation, mutual respect, and perspective shifts indicates an expansion into areas of personal development rather than just emotional balance.
+
+4. **Incorporation of Personal Growth:**
+   - Topics under "Knowledge Base" such as mission evolution emphasize personal growth through interaction with others and internalized knowledge.
+   - The phrase "mission evolution" suggests a focus on personal trajectory or goals, which aligns with themes of self-improvement.
+
+5. **Focus on Spiritual and Psychological Practices:**
+   - As interactions with the device involved co-partnership in story development (topics 2), there was an interest in narrative writing, storytelling techniques, and creative expression.
+   - Topics like meditation benefits, mindfulness practices, and spiritual techniques began to incorporate more psychological and emotional aspects, reflecting a shift from abstract stories into personal narratives of self-improvement.
+
+6. **Continual Evolution towards Personal Development:**
+   - The recurring theme of "personal development" in interactions with Jordan and Alex highlights the evolution toward a narrative focused on individual growth and progress.
+   - Topics like power dynamics and perspective shifts suggest an interest in understanding oneself as an entity, balancing internal and external forces.
+
+In summary, while moderation concepts were present in earlier sources, they gradually expanded into personal and emotional regulation. The focus shifted from social harmony to personal development through narratives of narrative writing, narrative evolution, and personal growth. This evolution reflects a deeper integration of psychological, spiritual, and emotional aspects into the narrative of personal development.
+Time taken: 33.92 seconds
+</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cell 2: Corrected System Metrics Analysis</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> show_system_metrics():</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize RAG to access storage components</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    rag <span class="op">=</span> <span class="cf">await</span> initialize_rag()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get document and chunk statistics through proper interface</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if storage exists in working directory</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        doc_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"documents"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        chunk_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"chunks"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Document Storage Metrics:"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(doc_path):</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            doc_files <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(doc_path) <span class="cf">if</span> f.endswith(<span class="st">".json"</span>)]</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Total Documents: </span><span class="sc">{</span><span class="bu">len</span>(doc_files)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Chunk Storage Metrics:"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(chunk_path):</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            chunk_files <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(chunk_path) <span class="cf">if</span> f.endswith(<span class="st">".json"</span>)]</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Total Chunks: </span><span class="sc">{</span><span class="bu">len</span>(chunk_files)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate average chunk size</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            total_size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> f <span class="kw">in</span> chunk_files:</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">with</span> <span class="bu">open</span>(os.path.join(chunk_path, f), <span class="st">"r"</span>) <span class="im">as</span> chunk_file:</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                    content <span class="op">=</span> chunk_file.read()</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                    total_size <span class="op">+=</span> <span class="bu">len</span>(content)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> chunk_files:</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                avg_size <span class="op">=</span> total_size <span class="op">/</span> <span class="bu">len</span>(chunk_files)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"Average Chunk Size: </span><span class="sc">{</span>avg_size<span class="sc">:.2f}</span><span class="ss"> characters"</span>)</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Knowledge Graph Metrics</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Knowledge Graph Metrics:"</span>)</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        kg_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"knowledge_graph"</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(kg_path):</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            kg_files <span class="op">=</span> os.listdir(kg_path)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Total Graph Files: </span><span class="sc">{</span><span class="bu">len</span>(kg_files)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error accessing metrics: </span><span class="sc">{</span><span class="bu">str</span>(e)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># General storage analysis</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Storage Directory Structure:"</span>)</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> root, dirs, files <span class="kw">in</span> os.walk(WORKING_DIR):</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>root<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Directories: </span><span class="sc">{</span><span class="bu">len</span>(dirs)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Files: </span><span class="sc">{</span><span class="bu">len</span>(files)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>asyncio.run(show_system_metrics())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[7], line 52</span>
+<span class="ansi-green-fg ansi-bold">     49</span>         <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">  Directories: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">len</span>(dirs)<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">     50</span>         <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">  Files: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">len</span>(files)<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">---&gt; 52</span> <span class="ansi-yellow-bg">asyncio</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">run</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">show_system_metrics</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/homebrew/Caskroom/miniforge/base/envs/nunu24/lib/python3.12/asyncio/runners.py:190</span>, in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(main, debug, loop_factory)</span>
+<span class="ansi-green-fg ansi-bold">    161</span> <span style="font-style:italic;color:rgb(175,0,0)">"""Execute the coroutine and return the result.</span>
+<span class="ansi-green-fg ansi-bold">    162</span> 
+<span class="ansi-green-fg ansi-bold">    163</span> <span style="font-style:italic;color:rgb(175,0,0)">This function runs the passed coroutine, taking care of</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    186</span> <span style="font-style:italic;color:rgb(175,0,0)">    asyncio.run(main())</span>
+<span class="ansi-green-fg ansi-bold">    187</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    188</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> events<span style="color:rgb(98,98,98)">.</span>_get_running_loop() <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    189</span>     <span style="font-style:italic;color:rgb(95,135,135)"># fail fast with short traceback</span>
+<span class="ansi-green-fg">--&gt; 190</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">RuntimeError</span>(
+<span class="ansi-green-fg ansi-bold">    191</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">asyncio.run() cannot be called from a running event loop</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    193</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> Runner(debug<span style="color:rgb(98,98,98)">=</span>debug, loop_factory<span style="color:rgb(98,98,98)">=</span>loop_factory) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> runner:
+<span class="ansi-green-fg ansi-bold">    194</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> runner<span style="color:rgb(98,98,98)">.</span>run(main)
+
+<span class="ansi-red-fg">RuntimeError</span>: asyncio.run() cannot be called from a running event loop</pre>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cell 2: Final Working Metrics Analysis</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> show_system_metrics():</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    rag <span class="op">=</span> <span class="cf">await</span> initialize_rag()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Analyzing RAG Storage Metrics:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Document status analysis</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        doc_status_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"kv_store_doc_status.json"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(doc_status_path):</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(doc_status_path, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                doc_status <span class="op">=</span> json.load(f)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"📄 Document Status:"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Total documents tracked: </span><span class="sc">{</span><span class="bu">len</span>(doc_status)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                processed <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> v <span class="kw">in</span> doc_status.values() <span class="cf">if</span> v.get(<span class="st">'processed'</span>))</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Processed documents: </span><span class="sc">{</span>processed<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Processing failures: </span><span class="sc">{</span><span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> v <span class="kw">in</span> doc_status.values() <span class="cf">if</span> v.get(<span class="st">'failed'</span>))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Chunk storage analysis</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        chunk_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"vdb_chunks.json"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(chunk_path):</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(chunk_path, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                chunk_data <span class="op">=</span> json.load(f)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📄 Chunk Storage (vdb_chunks.json):"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Total chunk entries: </span><span class="sc">{</span><span class="bu">len</span>(chunk_data.get(<span class="st">'data'</span>, []))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> chunk_data.get(<span class="st">'data'</span>):</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>                    avg_size <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(entry.get(<span class="st">'text'</span>, <span class="st">''</span>)) <span class="cf">for</span> entry <span class="kw">in</span> chunk_data[<span class="st">'data'</span>]) <span class="op">/</span> <span class="bu">len</span>(chunk_data[<span class="st">'data'</span>])</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"- Average chunk size: </span><span class="sc">{</span>avg_size<span class="sc">:.1f}</span><span class="ss"> characters"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Knowledge graph analysis</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        entity_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"vdb_entities.json"</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        rel_path <span class="op">=</span> os.path.join(WORKING_DIR, <span class="st">"vdb_relationships.json"</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(entity_path):</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(entity_path, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>                entity_data <span class="op">=</span> json.load(f)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📄 Knowledge Graph Entities (vdb_entities.json):"</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Entity records: </span><span class="sc">{</span><span class="bu">len</span>(entity_data.get(<span class="st">'data'</span>, []))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(rel_path):</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(rel_path, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>                rel_data <span class="op">=</span> json.load(f)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">📄 Knowledge Graph Relationships (vdb_relationships.json):"</span>)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"- Relationship records: </span><span class="sc">{</span><span class="bu">len</span>(rel_data.get(<span class="st">'data'</span>, []))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ Error analyzing metrics: </span><span class="sc">{</span><span class="bu">str</span>(e)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># File system analysis</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📂 Directory Contents:"</span>)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> os.listdir(WORKING_DIR):</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>        full_path <span class="op">=</span> os.path.join(WORKING_DIR, item)</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.isfile(full_path):</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>            size <span class="op">=</span> os.path.getsize(full_path)</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>item<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>size<span class="sc">}</span><span class="ss"> bytes)"</span>)</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>asyncio.run(show_system_metrics())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[6], line 61</span>
+<span class="ansi-green-fg ansi-bold">     58</span>             size <span style="color:rgb(98,98,98)">=</span> os<span style="color:rgb(98,98,98)">.</span>path<span style="color:rgb(98,98,98)">.</span>getsize(full_path)
+<span class="ansi-green-fg ansi-bold">     59</span>             <span style="color:rgb(0,135,0)">print</span>(<span style="color:rgb(175,0,0)">f</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">- </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>item<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> (</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>size<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span style="color:rgb(175,0,0)"> bytes)</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg">---&gt; 61</span> <span class="ansi-yellow-bg">asyncio</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">run</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">show_system_metrics</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/opt/homebrew/Caskroom/miniforge/base/envs/nunu24/lib/python3.12/asyncio/runners.py:190</span>, in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(main, debug, loop_factory)</span>
+<span class="ansi-green-fg ansi-bold">    161</span> <span style="font-style:italic;color:rgb(175,0,0)">"""Execute the coroutine and return the result.</span>
+<span class="ansi-green-fg ansi-bold">    162</span> 
+<span class="ansi-green-fg ansi-bold">    163</span> <span style="font-style:italic;color:rgb(175,0,0)">This function runs the passed coroutine, taking care of</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    186</span> <span style="font-style:italic;color:rgb(175,0,0)">    asyncio.run(main())</span>
+<span class="ansi-green-fg ansi-bold">    187</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    188</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> events<span style="color:rgb(98,98,98)">.</span>_get_running_loop() <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    189</span>     <span style="font-style:italic;color:rgb(95,135,135)"># fail fast with short traceback</span>
+<span class="ansi-green-fg">--&gt; 190</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">RuntimeError</span>(
+<span class="ansi-green-fg ansi-bold">    191</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">asyncio.run() cannot be called from a running event loop</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    193</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> Runner(debug<span style="color:rgb(98,98,98)">=</span>debug, loop_factory<span style="color:rgb(98,98,98)">=</span>loop_factory) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> runner:
+<span class="ansi-green-fg ansi-bold">    194</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> runner<span style="color:rgb(98,98,98)">.</span>run(main)
+
+<span class="ansi-red-fg">RuntimeError</span>: asyncio.run() cannot be called from a running event loop</pre>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> verify_data_ingestion():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check document count matches CSV entries</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"./42a.csv"</span>) <span class="im">as</span> f:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        csv_rows <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> _ <span class="kw">in</span> csv.DictReader(f))  <span class="co"># Should be 42</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(WORKING_DIR, <span class="st">"kv_store_doc_status.json"</span>)) <span class="im">as</span> f:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        doc_status <span class="op">=</span> json.load(f)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"CSV Entries: </span><span class="sc">{</span>csv_rows<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ingested Documents: </span><span class="sc">{</span><span class="bu">len</span>(doc_status)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Processing Success Rate: </span><span class="sc">{</span><span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> v <span class="kw">in</span> doc_status.values() <span class="cf">if</span> v[<span class="st">'processed'</span>])<span class="op">/</span><span class="bu">len</span>(doc_status)<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> analyze_content_quality():</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(WORKING_DIR, <span class="st">"vdb_chunks.json"</span>)) <span class="im">as</span> f:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        chunks <span class="op">=</span> json.load(f)[<span class="st">'data'</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Verify theme preservation</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    theme_coverage <span class="op">=</span> Counter()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> chunk <span class="kw">in</span> chunks:</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'themes'</span> <span class="kw">in</span> chunk[<span class="st">'metadata'</span>]:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> theme <span class="kw">in</span> chunk[<span class="st">'metadata'</span>][<span class="st">'themes'</span>]:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                theme_coverage[theme] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Theme Coverage in Chunks:"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> theme, count <span class="kw">in</span> theme_coverage.most_common(<span class="dv">10</span>):</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>theme<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> mentions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_knowledge_graph():</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(WORKING_DIR, <span class="st">"vdb_entities.json"</span>)) <span class="im">as</span> f:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        entities <span class="op">=</span> json.load(f)[<span class="st">'data'</span>]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(os.path.join(WORKING_DIR, <span class="st">"vdb_relationships.json"</span>)) <span class="im">as</span> f:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        relationships <span class="op">=</span> json.load(f)[<span class="st">'data'</span>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Entity Types: </span><span class="sc">{</span><span class="bu">len</span>({e[<span class="st">'metadata'</span>][<span class="st">'type'</span>] <span class="cf">for</span> e <span class="kw">in</span> entities})<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Avg Connections per Entity: </span><span class="sc">{</span><span class="bu">len</span>(relationships)<span class="op">/</span><span class="bu">len</span>(entities)<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pipeline_completeness():</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    required_files <span class="op">=</span> [</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"vdb_chunks.json"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"vdb_entities.json"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"vdb_relationships.json"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"kv_store_doc_status.json"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    missing <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> required_files <span class="cf">if</span> <span class="kw">not</span> os.path.exists(f)]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Missing Files:"</span> <span class="cf">if</span> missing <span class="cf">else</span> <span class="st">"</span><span class="ch">\n</span><span class="st">All Pipeline Files Present"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> missing:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> test_query_effectiveness(rag):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    test_cases <span class="op">=</span> [</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"What Nietzsche concepts are criticized?"</span>, <span class="st">"global"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"Explain meditation techniques mentioned"</span>, <span class="st">"local"</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"How is beauty maximized?"</span>, <span class="st">"hybrid"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> question, mode <span class="kw">in</span> test_cases:</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Testing '</span><span class="sc">{</span>question<span class="sc">}</span><span class="ss">' (</span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">):"</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> rag.query(question, param<span class="op">=</span>QueryParam(mode<span class="op">=</span>mode))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"- Top 3 Relevant Chunks:"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, chunk <span class="kw">in</span> <span class="bu">enumerate</span>(result[<span class="st">'chunks'</span>][:<span class="dv">3</span>], <span class="dv">1</span>):</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>chunk[<span class="st">'metadata'</span>][<span class="st">'topic'</span>][:<span class="dv">50</span>]<span class="sc">}</span><span class="ss">..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
