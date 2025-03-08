@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d6" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d5" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d4" for="edge" attr.name="description" attr.type="string" />
+  <key id="d3" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d2" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="Alex">
+      <data key="d0">person</data>
+      <data key="d1">Alex is portrayed as a character who experiences frustration and is observant of the dynamics among other characters.&lt;SEP&gt;Alex leads the team that might be interacting with an unknown intelligence, executing its evolved objectives and activities.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <node id="Taylor">
+      <data key="d0">person</data>
+      <data key="d1">Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <node id="Jordan">
+      <data key="d0">person</data>
+      <data key="d1">Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <node id="Cruz">
+      <data key="d0">person</data>
+      <data key="d1">Cruz is associated with a vision of control and order, influencing the dynamics among other characters.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <node id="The Device">
+      <data key="d0">technology</data>
+      <data key="d1">The Device is central to the story, with potential game-changing implications, and is revered by Taylor.</data>
+      <data key="d2">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </node>
+    <edge source="Alex" target="Taylor">
+      <data key="d3">7.0</data>
+      <data key="d4">Alex is affected by Taylor's authoritarian certainty and observes changes in Taylor's attitude towards the device.</data>
+      <data key="d5">power dynamics, perspective shift</data>
+      <data key="d6">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </edge>
+    <edge source="Alex" target="Jordan">
+      <data key="d3">6.0</data>
+      <data key="d4">Alex and Jordan share a commitment to discovery, which contrasts with Cruz's vision.</data>
+      <data key="d5">shared goals, rebellion</data>
+      <data key="d6">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </edge>
+    <edge source="Taylor" target="Jordan">
+      <data key="d3">8.0</data>
+      <data key="d4">Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce.</data>
+      <data key="d5">conflict resolution, mutual respect</data>
+      <data key="d6">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </edge>
+    <edge source="Taylor" target="The Device">
+      <data key="d3">9.0</data>
+      <data key="d4">Taylor shows reverence towards the device, indicating its importance and potential impact.</data>
+      <data key="d5">reverence, technological significance</data>
+      <data key="d6">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </edge>
+    <edge source="Jordan" target="Cruz">
+      <data key="d3">5.0</data>
+      <data key="d4">Jordan's commitment to discovery is in rebellion against Cruz's vision of control and order.</data>
+      <data key="d5">ideological conflict, rebellion</data>
+      <data key="d6">chunk-4aa607e31404231a875c8c3b7193afc7</data>
+    </edge>
+  </graph>
+</graphml>
