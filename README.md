@@ -38,7 +38,7 @@ $ pip install git+https://github.com/adamaslan/lightrag1.git
 or from [conda](https://anaconda.org/adamaslan/lightrag1)
 
 ``` sh
-$ conda install -c adamaslan lightrag1
+$ mamba install -c adamaslan lightrag1
 ```
 
 or from [pypi](https://pypi.org/project/lightrag1/)
